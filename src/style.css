@@ -1,0 +1,45 @@
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.box ul {
+    display: none;
+    width: 400px;
+    border: 1px solid #000;
+    border-radius: 20px;
+}
+
+.box>ul {
+    display: block;
+}
+
+.box li {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px solid #eee;
+    text-indent: 20px;
+    font-size: 12px;
+    position: relative;
+}
+
+.box li>ul {
+    position: absolute;
+    left: 500px;
+    top: 0;
+}
+
+.box li h2 {
+    font-weight: normal;
+    position: relative;
+}
+
+.box li h2.cur:after {
+    content: ">";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}

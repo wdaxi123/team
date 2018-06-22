@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./data.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <script>
+            function render(data) {
+                var html = "<ul>";
+                data.map(function(v) {
+                    if (v.kpListVOs.length) {
+                        html += '<li class="Level' + v.kpLevel + '"><h2 class="cur">' + v.kpName + '</h2>' + render(v.kpListVOs) + '</li>'
+                    } else {
+                        html += '<li class="Level' + v.kpLevel + '"><h2>' + v.kpName + '</h2></li>'
+                    }
+                })
+                html += "</ul>";
+                return html;
+            }
+            var box = document.querySelector('.wrap');
+            box.innerHTML = render(data);
+            var firstul = box.querySelector('ul');
+            var uls = box.querySelectorAll('ul');
+            box.onclick = function(e) {
+                if (e.target.className == 'cur') {
+                    if (e.target.parentNode.parentNode.parentNode.className == "wrap") {
+                        for (var i = 0, len = uls.length; i < len; i++) {
+                            uls[i].style.display = "none";
+                        };
+                        firstul.style.display = "block";
+                    }
+                    var tag = e.target.nextElementSibling;
+                    tag.style.display = 'block';
+                }
+            }
+        </script>
+    </div>
+</body>
+
+</html>
